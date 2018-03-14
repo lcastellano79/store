@@ -1,0 +1,34 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Edit Categories{% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+        <h2>Edit Categories</h2>
+        <button class="add_button" onclick="location.href='/admin/categories/addedit'">Add Category</button>
+        <table class="category_list">
+            <tr>
+                <th>ID</th>
+                <th>Category Name</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                {% for category in categoryList %}
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td class="table_button"><button class="adm_button" onclick="location.href='/admin/categories/addedit/{{category.id}}'">Edit Category</button></td>
+                    <td class="table_button"><button class="adm_button" onclick="location.href='/admin/categories/delete/{{category.id}}'">Delete Category</button></td>
+                    <td class="table_button"><button class="adm_button" onclick="location.href='/category/{{category.id}}'">View Category</button></td>
+            </tr>
+                {% else %}
+                    <tr>
+                        <td>There are no categories available.</td> 
+                    </tr> 
+                {% endfor %}   
+        </table>
+    </div>
+                
+{% endblock %}

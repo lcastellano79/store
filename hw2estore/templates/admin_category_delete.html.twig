@@ -1,0 +1,29 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Delete Category{% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+        <h2> Delete Category</h2>
+        <p>{{ message }}</p>
+        {% for product in products %}
+                    <div class="item_card">
+                        <a href="/product/{{ product.id }}"><img alt="description" src="{{product.image_path}}" height="350"></a>
+                        <div class="item_detail">
+                        <form class="delete" method="GET" action="/admin/products/delete/{{product.id}}">
+                            <input type="submit" value="Delete Product" id="submit">
+                        </form>
+                        <h2>CDN$ {{product.price}} </h2>
+                        <p>{{ product.description }}</p>
+                        </div>
+                    </div>      
+        {% else %}
+                <form class="delete" method="POST">
+                    <input class="adm_button" type="submit" value="Delete Category" id="submit">
+                </form>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

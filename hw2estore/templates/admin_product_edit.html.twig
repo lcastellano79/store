@@ -1,0 +1,55 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Add Product{% endblock %}
+
+{% block mainContent %}
+    
+    
+    <div class="products">
+    <h2>Edit Product</h2>
+        <form enctype="multipart/form-data" method="POST">
+            <div class="product_edit">Category Name:<select class="category_name" name="category_name">
+                {% for category in categoryList %}
+                    <option value="{{ category.name }}"{% if category.name == valueList.name %} selected {% endif%}>{{ category.name }}</option>
+                {% endfor %} 
+                </select></div>
+            <label for="product_id">Product ID (readonly):</label> <input type="text" name="product_id" id="product_id" value="{{ valueList.id }}" readonly><br>
+            <label for="product_name">Product Name:</label> <input type="text" name="product_name" id="product_name" value="{{ valueList.product_name }}">  <br>
+            <label for="description">Description:</label> <input type="text" name="description" id="description" value="{{ valueList.description }}"><br>
+            <label for="price">Price:</label> <input type="text" name="price" id="price" value="{{ valueList.price }}"><br>
+            <label for="is_front_page">Is Front Page:</label> <input type="text" name="is_front_page" id="is_front_page" value="{{ valueList.IsFrontPage }}"><br>
+            <div class="product_edit">Do you want to change the product picture?</div>
+            <div class="product_edit inline_radio">
+                <input type="radio" name="change_picture" id="no" value="no" checked>No
+                <input type="radio" name="change_picture" id="yes" value="yes">Yes
+            </div>
+            <div id="select_file" class="product_edit">
+            </div>
+            <input type="submit" value="Edit Product" id="submit" class="adm_button">
+        </form>
+        {% if errorList %}
+            <div class="error">
+                <h2>Errors</h2>
+                <ul>
+                    {% for error in errorList %}
+                        <li> {{ error }} </li>
+                    {% endfor %}    
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+             
+    <script>
+    $(document).ready(function() {
+        $('input[name=change_picture]').change(function() {  
+            if ($("#yes").prop("checked")=== true) {
+                $("#select_file").html ('Select image to upload:<input id="select_file" type="file" name="imageUpload">');
+            } else if ($("#no").prop("checked")=== true) {
+                $("#select_file").empty();};
+        });   
+    });
+        
+    </script>    
+        
+        
+{% endblock %}

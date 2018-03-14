@@ -1,0 +1,63 @@
+{% extends "master.html.twig" %}
+
+{% block title %} Shopping Cart {% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+        <h2>Shopping Cart</h2>
+        <div id="error_placeholder"></div>
+        <table class="cart">
+            <tr>
+                <th>Item</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price (CAD)</th>
+                <th>Total</th>
+            </tr>
+            {% for cart_item in cart %}
+            <tr>    
+                <td>{{ loop.index }}</td>
+                <td class="product_name"> {{ cart_item.product_name }}</td>
+                <td> <input type="number" name="quantity" min="0" value="{{ cart_item.quantity }}" id="{{ cart_item.productID }}"></td>
+                <td class="price"> {{ cart_item.price }} </td>
+                <td class="total"> {{ (cart_item.price * cart_item.quantity) }} </td>
+            </tr>
+            {% else %}
+            <tr class="empty">    
+                <td>Cart is empty.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </table>   
+        <button class="adm_button" id="checkout" onclick="location.href='/order'">Submit Order</button>
+    </div>
+    
+    <script>
+    $(document).ready(function() {
+        $('input[name=quantity]').change(function() {  
+            var itemID = $(this).attr('id');
+            var quantity = Number(document.getElementById(itemID).value);
+            //var quantity = Number(('#itemID').val());
+            var price = Number($(this).parent().siblings(".price").text());
+            var total = (price * quantity).toFixed(2);
+            $(this).parent().siblings(".total").text(total);
+            var ajaxurl = '/ajax/cart/set/prod/' + itemID + '/quantity/' + quantity;
+            $.get(ajaxurl, function(result) {
+                if (result!=="true") {
+                    $("#error_placeholder").addClass("cart_error");
+                    $("#error_placeholder").html(
+                    "<p>Sorry, it was not possible to update the cart due to an internal error.</p><p>Please try again.</p>");
+                } else {
+                    $("#error_placeholder").removeClass("cart_error");
+                    $("#error_placeholder").empty();
+                };
+            });
+        });
+     });
+    </script>
+            
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ product.product_name }} {% endblock %}
+
+{% block mainContent %}
+
+    <div class="products">
+        <h2>Product Add</h2>
+        <p> Product: {{ product.product_name }} added successfully</p>
+            {% if product %}
+                    <div class="item_card">
+                        <a href="/product/{{ product.id }}"><img alt="description" src="{{product.image_path}}" height="350"></a>
+                        <div class="item_detail">
+                        <h2>CDN$ {{product.price}} </h2>
+                        <p>{{ product.description }}</p>
+                        </div>
+                    </div>      
+            {% else %}
+                <p>Invalid product.</p>
+            {% endif %}
+    </div>
+    
+{% endblock %}

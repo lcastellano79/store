@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} Welcome to Flash.com {% endblock %}</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/ico">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Sarala" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".a_menu,.a_category").mouseenter(function() {
+                    $(this).css("color", "#FFFFFF").parent().css("background-color","#000000");	
+                });
+                $(".a_menu,.a_category").mouseleave(function() {
+                    $(this).css("color", "#000000").parent().css("background-color","#FFFFFF");
+                });
+                $(".a_menu,.a_category").click(function() {
+                    $(this).css("color", "#FFFFFF").parent().css("background-color","#FE3667");
+                });
+                $(".add_button, .adm_button").mouseenter(function() {
+                    $(this).css("color", "#FFFFFF").css("background-color","#000000");	
+                });
+                $(".add_button, .adm_button").mouseleave(function() {
+                    $(this).css("color", "#FFFFFF").css("background-color","#FE3667");
+                });
+                $(".add_button, .adm_button").click(function() {
+                    $(this).css("color", "#000000").css("background-color","#FFFFFF");
+                });
+            });
+        </script>
+        {% block headExtra %} {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <a href="/"><img alt="Flash.com" src="/images/logo.svg" class="logo"></a>
+                <div class="menu">
+                    <ul>
+                        <li><a class="a_menu" href="/login">Login</a></li>
+                        {% if session.user is defined %}
+                        <li><a class="a_menu" href="/admin">Administration</a></li>
+                        <li><a class="a_menu" href="/logout">Logout</a></li>
+                        {% endif%}
+                    </ul>
+                </div>
+               <a href="/cart"><img alt="cart_icon" src="/images/cart.png" class="cart_icon"></a>
+            </div>
+            <div class="section">
+            <div class="categories">
+                {% if session.user is defined %}
+                <h1>Options</h1>
+                <ul>
+                    <li><a class="a_category" href="/admin/categories/list"><b>Edit Categories</b></a></li>
+                    <li><a class="a_category" href="/admin/products/list"><b>Edit Products</b></a></li>
+                </ul> 
+                {% else %}
+                <h1>Categories</h1>    
+                 <ul>
+                    {% for category in categoryList %}
+                        <li><a class="a_category" href="/category/{{ category.id }}"><b>{{ category.name }}</b></a></li>
+                    {% else %}
+                        <li><p>There are no categories available.</p></li>
+                    {% endfor %}
+                </ul>   
+                {% endif%}
+            </div>
+            <div id="mainContent">
+                {% block mainContent %} 
+                    <p>No content </p>
+                {% endblock %}
+            </div>
+            </div> 
+            <div class="clear">
+            </div>
+            <div class="footer">
+                <p>by Larissa Castellano</p>
+            </div>
+        </div>
+    </body>
+</html>

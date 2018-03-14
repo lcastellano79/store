@@ -1,0 +1,37 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+    <h2>Edit Category</h2>
+        <form method="POST">
+            <label for="category_id">Category ID (readonly):</label> <input type="text" name="category_id" id="category_id" value="{{ valueList.category_id }}" readonly><br>
+            <label for="category_name">Category Name:</label> <input type="text" name="category_name" id="category_name" value="{{ valueList.category_name }}"><br>
+            <input type="submit" value="Change Category" id="submit" class="adm_button">
+        </form>
+        {% if errorList %}
+            <div class="error">
+                <h2>Errors</h2>
+                <ul>
+                    {% for error in errorList %}
+                        <li> {{ error }} </li>
+                    {% endfor %}    
+                </ul>
+            </div>
+        {% endif %}
+        <p>{{ message }}</p>
+        {% for product in products %}
+            <div class="item_card">
+                <a href="/product/{{ product.id }}"><img alt="description" src="{{product.image_path}}" width="548" height="350"></a>
+                <div class="item_detail">
+                    <h2>CDN$ {{product.price}} </h2>
+                    <p>{{ product.description }}</p>
+                </div>
+            </div>      
+        {% endfor %}
+    </div>
+                
+{% endblock %}
+

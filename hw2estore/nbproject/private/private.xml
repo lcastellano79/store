@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/web/images/logo.svg</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_category_add.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_category_delete.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/product.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/composer.json</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/master.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/order_success.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_product_add.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/category.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/web/.htaccess</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/logout.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_success.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/order.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/cart.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_categories_list.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/index.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/web/index.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_product_delete.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_category_edit.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/web/style.css</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/login.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_product_add_success.html.twig</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/webapps/hw2estore/templates/admin_products.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

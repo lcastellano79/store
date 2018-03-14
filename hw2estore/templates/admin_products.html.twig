@@ -1,0 +1,46 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Edit Products{% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+        <h2>Edit Products</h2>
+        <button class="add_button" onclick="location.href='/admin/products/addedit'">Add Product</button>
+        <table class="product_list">
+            <tr>
+                <th>ID</th>
+                <th>Product Image</th>
+                <th>Category</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Image_Path</th>
+                <th>Price</th>
+                <th>IsFrontPage</th>
+                <th>Options</th>
+            </tr>
+                {% for product in productList %}
+            <tr>
+                    <td class="table_id">{{ product.id }}</td>
+                    <td class="image_table"><img class="image_left" alt="{{ product.product_name }}" src="{{product.image_path}}" width="100"></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.description|slice(0, 100)}}</td>
+                    <td>{{ product.image_path }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.IsFrontPage }}</td>
+                    <td class="table_button">
+                        <button class="adm_button" onclick="location.href='/admin/products/addedit/{{product.id}}'">Edit Product</button>
+                        <button class="adm_button" onclick="location.href='/admin/products/delete/{{product.id}}'">Delete Product</button>
+                        <button class="adm_button" onclick="location.href='/product/{{product.id}}'">View Product</button>
+                    </td>
+            </tr>
+                {% else %}
+                    <tr>
+                        <td>There are no products available.</td> 
+                    </tr> 
+                {% endfor %}   
+        </table>
+    </div>
+                
+{% endblock %}

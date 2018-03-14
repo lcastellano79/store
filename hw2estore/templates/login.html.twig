@@ -1,0 +1,31 @@
+{% extends "master.html.twig" %}
+
+{% block title %} Login {% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+        <h2>Login</h2>
+        {% if session.user is defined %}
+            <p>You have already logged in.</p>
+            <p>Click <a href="/admin">here</a> to access the Administration Page.</p>
+        {% else %}
+            <form method="POST">
+                <label for="user_name">User Name:</label> <input type="text" name="user_name" id="user_name" value=""><br>
+                <label for="password">Password:</label> <input type="password" name="password" id="password" value=""><br>
+                <input type="submit" value="Login" id="submit" class="adm_button">
+            </form>
+            {% if errorList %}
+                <div class="error">
+                <h2>Errors</h2>
+                    <ul>
+                        {% for error in errorList %}
+                            <li> {{ error }} </li>
+                        {% endfor %}    
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+                
+{% endblock %}

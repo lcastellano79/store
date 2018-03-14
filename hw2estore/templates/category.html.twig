@@ -1,0 +1,26 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ categoryName }} {% endblock %}
+
+{% block mainContent %}
+
+    <div class="products">
+       <h2> {{ categoryName }} </h2>
+        <ul>
+            {% for product in productList %}
+                <li>
+                    <div class="item">
+                        <h1>{{ product.product_name }}</h1> 
+                        <a href="/product/{{ product.id }}"><img alt="{{ product.product_name }}" src="{{ product.image_path }}" height="150"></a>
+                        <h2>CDN$ {{ product.price }} </h2>
+                        <button class="adm_button" onclick="location.href='/cart/add/{{ product.id }}'">Add to cart</button>
+                        <p>{{ product.description |slice(0, 100) }}</p>
+                    </div>
+                </li>        
+            {% else %}
+                <li><p>There are no products available.</p></li>
+            {% endfor %} 
+        </ul>
+    </div>
+    
+{% endblock %}

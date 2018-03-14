@@ -1,0 +1,79 @@
+{% extends "master.html.twig" %}
+
+{% block title %} Order {% endblock %}
+
+{% block mainContent %}
+    
+    <div class="products">
+        <h2>Order</h2>
+        <form method="POST">
+            <label for="first_name">First Name:</label> <input type="text" name="first_name" id="first_name" value="{{ v.first_name }}"><br>
+            <label for="last_name">Last Name:</label> <input type="text" name="last_name" id="last_name" value="{{ v.last_name }}"><br>
+            <label for="address">Address:</label> <input type="text" name="address" id="address" value="{{ v.address }}"><br>
+            <label for="postcode">Postcode:</label> <input type="text" name="postcode" id="postcode" value="{{ v.postcode }}" maxlength="7"><br>
+            <label for="country">Country:</label> <input type="text" name="country" id="country" value="{{ v.country }}"><br>
+            <label for="provinceorstate">Province or State:</label> <input type="text" name="provinceorstate" id="provinceorstate" value="{{ v.provinceorstate }}"><br>
+            <label for="email1">E-mail:</label> <input type="text" name="email1" id="email1" value="{{ v.email1 }}"><br>
+            <label for="email2">Re-type E-mail:</label> <input type="text" name="email2" id="email2" value="{{ v.email2 }}"><br>
+            <label for="phone">Phone:</label> <input type="text" name="phone" id="phone" value="{{ v.phone }}" maxlength="10"><br>
+            <label for="credit_card_no">Credit Card Number:</label> <input type="text" name="credit_card_no" id="credit_card_no" value="" maxlength="16"><br>
+            <label for="credit_card_expiry">Credit Card Expiry Date (YYMM):</label> <input type="text" name="credit_card_expiry" id="credit_card_expiry" value="" maxlength="4"><br>
+            <label for="credit_card_cvv">Credit Card CVV:</label> <input type="text" name="credit_card_cvv" id="credit_card_cvv" value="" maxlength="3"><br>
+            <input class="adm_button" type="submit" value="Place Order" id="submit">
+        </form>
+        {% if errorList %}
+            <div class="error">
+                <h2>Errors</h2>
+                <ul>
+                    {% for error in errorList %}
+                        <li> {{ error }} </li>
+                    {% endfor %}    
+                </ul>
+            </div>
+        {% endif %}
+        <table class="order_list">
+                <tr>
+                    <th>Item</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price (CAD)</th>
+                    <th>Total</th>
+                </tr>
+                {% for cart_item in cart %}
+                <tr>    
+                    <td>{{ loop.index }}</td>
+                    <td class="product_name"> {{ cart_item.product_name }}</td>
+                    <td> {{ cart_item.quantity }} </td>
+                    <td class="price"> {{ cart_item.price }} </td>
+                    <td class="total"> {{ (cart_item.price * cart_item.quantity) }} </td>
+                </tr>
+                {% else %}
+                    <tr class="empty">    
+                    <td>Cart is empty.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+            {% endfor %} 
+        </table>
+        <table class="order_total">
+            <tr>
+                <th>Total without taxes (CAD):</th>
+                <td>{{ total_wt }}</td>
+            </tr>
+            <tr>
+                <th>Taxes (CAD):</th>
+                <td>{{ taxes }}</td>
+            </tr>
+            <tr>
+                <th>Shipping (CAD):</th>
+                <td>{{ shipping }}</td>
+            </tr>
+            <tr>
+                <th>Total (CAD):</th>
+                <td><b>{{ total }}</b></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

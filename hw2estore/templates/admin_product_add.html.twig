@@ -1,0 +1,42 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Add Product{% endblock %}
+
+{% block mainContent %}
+    
+    
+    <div class="products">
+    <h2>Add Product</h2>
+        <form enctype="multipart/form-data" method="POST">
+            <div class="product_edit">Category Name:<select class="category_name" name="category_name" required>
+                {# {% if valueList.category_name is defined %} #} <option disabled selected value>-select a category-</option> {# {% endif%} #}
+                 {% for category in categoryList %}
+                     <option {# {% if category.name is same as valueList.category_name %} selected {% endif%} #}>
+                         {{ category.name }}
+                     </option>
+                 {% endfor %}
+                </select>
+            </div>
+            <label for="product_name">Product Name:</label> <input type="text" name="product_name" id="product_name" value="{{ valueList.product_name }}">  <br>
+            <label for="description">Description:</label> <input type="text" name="description" id="description" value="{{ valueList.description }}"><br>
+            {#<label for="image_path">Image Path:</label> <input type="text" name="image_path" id="image_path" value="{{ valueList.image_path }}"><br>#}
+            <label for="price">Price:</label> <input type="text" name="price" id="price" value="{{ valueList.price }}"><br>
+            <label for="is_front_page">Is Front Page:</label> <input type="text" name="is_front_page" id="is_front_page" value="{{ valueList.is_front_page }}"><br>
+            <div class="product_edit">Select image to upload:</div>
+            <div><input type="file" name="imageUpload" class="product_edit"></div>
+            <input type="submit" value="Add" id="submit" class="adm_button">
+        </form>
+        {% if errorList %}
+            <div class="error">
+                <h2>Errors</h2>
+                <ul>
+                    {% for error in errorList %}
+                        <li> {{ error }} </li>
+                    {% endfor %}    
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+             
+{% endblock %}
+
